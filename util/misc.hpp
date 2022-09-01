@@ -9,6 +9,8 @@
 
 namespace util {
 
+#define RAND_INIT() srand(time(NULL));
+
 #if defined(DEBUG_MODE)
 #define LOG(msg)    printf("[%d.%s] %s\n", __LINE__, __func__, msg)
 #else   // DEBUG_MODE
@@ -57,6 +59,15 @@ inline std::string arr2str(const std::vector<int> &&buffer) {
     }
 
     return ret + "]";
+}
+
+inline long exp(const int base, const int power) {
+    long ret = 1;
+    for (int i = 0; power > i; i++) {
+        ret = ret * base;
+    }
+
+    return ret;
 }
 
 }   // namespace util
